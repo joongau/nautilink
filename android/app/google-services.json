@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "944402918219",
+    "project_id": "nautilink-ba5b4",
+    "storage_bucket": "nautilink-ba5b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944402918219:android:a3da5f35d40c2e4d3216ce",
+        "android_client_info": {
+          "package_name": "com.nautilink.nautilink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRx4-SOSArix2e3t7kp9fslxbvBYWoq4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
