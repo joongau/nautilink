@@ -28,10 +28,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -65,4 +62,14 @@ class DefaultFirebaseOptions {
     storageBucket: 'nautilink-ba5b4.firebasestorage.app',
     iosBundleId: 'com.nautilink.nautilink',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBZBJ_kGrCirR7Or8ax8XNIbm-qFIqghdA',
+    appId: '1:944402918219:ios:25f5a5f4fc79446f3216ce',
+    messagingSenderId: '944402918219',
+    projectId: 'nautilink-ba5b4',
+    storageBucket: 'nautilink-ba5b4.firebasestorage.app',
+    iosBundleId: 'com.nautilink.nautilink',
+  );
+
 }
