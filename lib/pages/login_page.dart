@@ -31,22 +31,26 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   }
 
   Future<void> _signInEmail() async {
+    print('[_signInEmail] attempt for ${_emailController.text.trim()}');
     if (!_formKey.currentState!.validate()) return;
     setState(() => _isLoading = true);
     final repo = ref.read(authRepositoryProvider);
     try {
-      await repo.signInWithEmail(
+      final credential = await repo.signInWithEmail(
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
+      print('[auth] success uid=${credential.user?.uid}');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Connecté : ${_emailController.text.trim()}')),
+        SnackBar(content: Text('Connecté : ${credential.user?.email}')),
       );
     } on FirebaseAuthException catch (e) {
+      print('[auth] FirebaseAuthException code=${e.code} message=${e.message}');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.message ?? 'Erreur authentification')),
       );
-    } catch (_) {
+    } catch (e, st) {
+      print('[auth] Exception $e\n$st');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Erreur inattendue')),
       );
@@ -67,23 +71,30 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: <Widget>[
                     TextFormField(
                       controller: _emailController,
                       decoration: const InputDecoration(labelText: 'Email'),
                       keyboardType: TextInputType.emailAddress,
-                      validator: (value) => (value != null && value.contains('@')) ? null : 'Email invalide',
+                      validator: (value) => (value != null && value.contains('@'))
+                          ? null
+                          : 'Email invalide',
                     ),
                     const SizedBox(height: 12),
                     TextFormField(
                       controller: _passwordController,
                       decoration: const InputDecoration(labelText: 'Mot de passe'),
                       obscureText: true,
-                      validator: (value) => (value != null && value.length >= 6) ? null : '6 caractères min.',
+                      validator: (value) => (value != null && value.length >= 6)
+                          ? null
+                          : '6 caractères min.',
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: _signInEmail,
+                      onPressed: () {
+                        print('[ui] Bouton Se connecter pressé');
+                        _signInEmail();
+                      },
                       child: const Text('Se connecter'),
                     ),
                   ],

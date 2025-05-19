@@ -22,4 +22,6 @@ class AuthRepository {
   Future<void> signOut() {
     return _firebaseAuth.signOut();
   }
+  /// Stream of auth state changes (signed in user or null).
+  Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
 }

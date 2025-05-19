@@ -65,7 +65,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyBZBJ_kGrCirR7Or8ax8XNIbm-qFIqghdA',
-    appId: '1:944402918219:ios:25f5a5f4fc79446f3216ce',
+    appId: '1:944402918219:macos:25f5a5f4fc79446f3216ce',
     messagingSenderId: '944402918219',
     projectId: 'nautilink-ba5b4',
     storageBucket: 'nautilink-ba5b4.firebasestorage.app',
